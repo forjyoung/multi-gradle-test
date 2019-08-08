@@ -1,0 +1,19 @@
+// 需要加上这句话，否则 common-lib 包不会被 build 进来
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java','../common-lib/src/main/java']
+        }
+    }
+}
+
+jar {
+        manifest {
+            attributes "Main-Class": "A"
+        }
+}
+
+dependencies {
+    compile project(':common-lib')
+    compile('org.apache.commons:commons-lang3:3.9')
+}
